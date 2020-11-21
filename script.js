@@ -1,10 +1,10 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");{
+}
 
-var numbers = [0,1,2,3,4,5,6,7,8,9]
-var lowerLetters = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]
-var upperLetters = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z]
-var characters = [',','.','!','@','#','$','%','^','&','*','/','<','>','?']
+var upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+ var specialChar = ['!','@','#','$','%','^','&','*','?','(',')','<','>','=','+','-'];
 
 
 // Write password to the #password input
@@ -13,32 +13,65 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-  
 }
 
-function generatepassword()
+function generatePassword(){
+  var length = parseInt(prompt('How long do you want your password?'));
+  console.log(length)
+  var numbers = confirm('Would you like numbers?');
+  console.log(numbers)
+  var lettersUpper = confirm('Would you like Uppercase letters?');
+  console.log(lettersUpper)
+  var lettersLower = confirm('Would you like Lowercase letters?');
+  console.log(lettersLower)
+  var chars = confirm('Would you like Special Characters?');
+  console.log(chars)
+  var charChoices = [];
+  console.log(charChoices)
+  var passwordArr = [];
+  console.log(passwordArr)
 
-for (var i = 0; i < numbers; i++) {
-  var num = Math.floor(Math.random() * Math.floor(10))
-  console.log(num);
-}
-for (var i = 0; i <lowerLetters; i++){
-  var num = Math.floor(Math.random() * Math.floor(10))
-  console.log(num);
-}
+  if(length >= 8 && length <= 128){
+    if(numbers === true){
+      charChoices.push('numbers')
+    }
+    if(lettersUpper === true){
+      charChoices.push('lettersUpper')
+    }
+    if(lettersLower === true){
+      charChoices.push('lettersLower')
+    }
+    if(chars === true){
+      charChoices.push('chars')
+    }
 
-for (var i = 0; i < upperLetters; i++){
-  var num = Math.floor(Math.random() * Math.floor(10))
-  console.log(num);
-}
+    for(var i = 0; i < length; i++){
+      var randomcharchoice = charChoices[Math.floor(Math.random() * charChoices.length)-1]
+      console.log(randomcharchoice)
 
-for (var i = 0; i < characters; i++){
-  var num = Math.floor(Math.random() * Math.floor(10))
-  console.log(num);
-}
-
-
+      if(randomcharchoice === 'numbers'){
+        var randomNum = Math.floor(Math.random() * Math.floor(10))
+        passwordArr.push(randomNum)
+      }
+      if(randomcharchoice === 'lettersUpper'){
+        var randomUpper = upperCase[Math.floor(Math.random() * upperCase.length)-1]
+        passwordArr.push(randomUpper)
+      }
+      if(randomcharchoice === 'lettersLower'){
+        var randomLower = lowerCase[Math.floor(Math.random() * lowerCase.length)-1]
+        passwordArr.push(randomLower)
+      }
+      if(randomcharchoice === 'chars'){
+        var randomSpecialChar = specialChar[Math.floor(Math.random() * specialChar.length)-1]
+        passwordArr.push(randomSpecialChar)
+      }
+    }
+    var passwordString = passwordArr.join('');
+    return passwordString
+  }else{
+    alert('Please choice between 8 and 128')
+  }
+}console.log(alert)
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
