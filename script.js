@@ -21,8 +21,9 @@ function generatePassword(){
   console.log(charChoices)
   var passwordArr = [];
   console.log(passwordArr)
+  
 
-  var length = parseInt(prompt('How long do you want your password?'));
+  var length = parseInt(prompt('How long do you want your password? (Choose between 8 and 128)'));
   if(length >= 8 && length <= 128){
     console.log(length)
 
@@ -49,10 +50,10 @@ function generatePassword(){
     charChoices.push('chars')
   }
   console.log(chars)
-}else{
-  alert('Please choose amount between 8 and 128!')
-}
-console.log(charChoices)
+  }else{
+    alert('Please choose amount between 8 and 128!')
+  }
+  console.log(charChoices)
 
     for(var i = 0; i < length; i++){
       var randomCharChoice = charChoices[Math.floor(Math.random() * charChoices.length)-1]
