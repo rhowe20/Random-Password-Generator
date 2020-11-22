@@ -56,7 +56,7 @@ function generatePassword(){
   console.log(charChoices)
 
     for(var i = 0; i < length; i++){
-      var randomCharChoice = charChoices[Math.floor(Math.random() * charChoices.length)-1]
+      var randomCharChoice = charChoices[Math.floor(Math.random() * charChoices.length)-1];
 
       if(randomCharChoice === 'numbers'){
       }else{
